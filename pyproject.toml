@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "TicTacToe"
+version = "0.1.0"
+description = ""
+authors = ["clifforc"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+black = ">=25.1.0,<26.0.0"
+isort = ">=6.0.1,<7.0.0"
+numpy = ">=2.2.4,<3.0.0"
+pydantic = "^2.11.4"
+flask = "^3.1.0"
+injector = "^0.22.0"
+requests = "^2.32.3"
+flask-cors = "^5.0.1"
+gunicorn = "^23.0.0"
+
+[[tool.poetry.packages]]
+include = "TicTacToe"
+from = "src"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+target-version = ["py312"]
+skip-string-normalization = false
+
+[tool.isort]
+profile = "black"
+known_first_party = ["TicTacToe"]

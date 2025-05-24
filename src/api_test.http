@@ -1,0 +1,30 @@
+# Переменные по умолчанию, задать game_id после первого запроса
+@host = http://localhost:8000
+@game_id =
+
+### POST Создать новую игру
+POST {{host}}/game
+Accept: application/json
+
+### GET Получить состояние игры
+GET {{host}}/game/{{game_id}}
+Accept: application/json
+
+### POST Сделать ход (X)
+POST {{host}}/game/{{game_id}}
+Content-Type: application/json
+
+{
+  "game_id": "{{game_id}}",
+  "field": {
+    "matrix": [
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+  }
+}
+
+### GET Проверить обновлённое состояние
+GET {{host}}/game/{{game_id}}
+Accept: application/json
