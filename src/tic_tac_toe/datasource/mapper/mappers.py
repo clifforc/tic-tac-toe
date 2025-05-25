@@ -1,4 +1,4 @@
-from tic_tac_toe.datasource.model.models import GameEntity, GameFieldEntity
+from tic_tac_toe.datasource.schemas.schemas import GameEntity, GameFieldEntity
 from tic_tac_toe.domain.model.models import Game, GameField
 
 

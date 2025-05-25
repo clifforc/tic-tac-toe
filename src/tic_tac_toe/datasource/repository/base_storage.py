@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from uuid import UUID
 
-from tic_tac_toe.datasource.model.models import GameEntity
+from tic_tac_toe.datasource.schemas.schemas import GameEntity
 
 
 class BaseGameStorage(ABC):

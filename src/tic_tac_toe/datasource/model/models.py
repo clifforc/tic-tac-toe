@@ -1,15 +1,23 @@
-from uuid import UUID
+import uuid
 
-import numpy as np
-from pydantic import BaseModel, Field
+from sqlalchemy import JSON
+from sqlalchemy.dialects.postgresql import UUID as PG_UUID
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
-class GameFieldEntity(BaseModel):
-    matrix: list[list[int]] = Field(
-        default_factory=lambda: np.zeros((3, 3), dtype=int)
+class Base(DeclarativeBase):
+    pass
+
+
+class Game(Base):
+    __tablename__ = "games"
+
+    game_id: Mapped[uuid.UUID] = mapped_column(
+        PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
     )
 
-
-class GameEntity(BaseModel):
-    game_id: UUID
-    field: GameFieldEntity
+    matrix: Mapped[list[list[int]]] = mapped_column(
+        JSON,
+        nullable=False,
+        default_factory=lambda: [[0,0,0], [0,0,0], [0,0,0]],
+    )
